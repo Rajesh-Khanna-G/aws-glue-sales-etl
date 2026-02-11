@@ -18,7 +18,9 @@ transformed_df = (
 )
 
 # Write processed data to S3
-transformed_df.write \
-    .mode("overwrite") \
-    .partitionBy("region")\
+(
+    transformed_df.write
+    .mode("append")
+    .partitionBy("region")
     .parquet("s3://glue-sales-etl-rajesh/processed/sales/")
+)
